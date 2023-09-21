@@ -1,0 +1,27 @@
+.promo {
+  background: #073042;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 524px;
+}
+
+.promo__logo {
+  position: absolute;
+}
+
+.promo__title {
+  max-width: 730px;
+  width: 100%;
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+  margin: 0;
+}
