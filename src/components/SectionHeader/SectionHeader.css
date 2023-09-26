@@ -1,0 +1,32 @@
+.title {
+  color: #fff;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0;
+  max-width: 600px;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.image-line {
+  max-width: 1140px;
+  width: 100%;
+  min-height: 1px;
+  padding-top: 23px;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .image-line {
+    padding-top: 28px;
+  }
+}
