@@ -1,0 +1,129 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 100%;
+}
+
+.navigation__links-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.38;
+  transition: opacity 0.3s ease-out;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__icon-wrapper {
+  min-width: 26px;
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: #0f4157;
+}
+
+.navigation__icon-wrapper_active {
+  background: #313131;
+}
+
+.navigation__acc-link {
+  min-width: 100px;
+  min-height: 32px;
+  border-radius: 40px;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+  background: #073042;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-decoration: none;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.92;
+  color: #fff;
+  transition: opacity 0.3s ease-out;
+}
+
+.navigation__acc-link:hover {
+  opacity: 0.7;
+}
+
+.navigation__link_active {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation {
+    display: none;
+  }
+
+  .navigation__active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    max-width: 520px;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    padding: 159px 90px 90px;
+    background-color: #202020;
+    z-index: 2;
+    animation: burgerAnimation .3s ease-out;
+  }
+
+  .navigation__links-list_active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .navigation__acc-link_active {
+    display: flex;
+    background: #202020;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation__active {
+    padding: 144px 10px 46px;
+  }
+
+  .navigation__links-list_active {
+    gap: 24px;
+  }
+}
+
+@keyframes burgerAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

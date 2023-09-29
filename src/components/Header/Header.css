@@ -7,7 +7,13 @@
 }
 
 .header__logo {
+  display: block;
   margin: 18px 0;
+  transition: opacity .3s ease-out;
+}
+
+.header__logo:hover {
+  opacity: .7;
 }
 
 .header__container {
@@ -29,6 +35,10 @@
   transition: opacity .3s ease-out;
 }
 
+.header__link_type_button {
+  color: #000;
+}
+
 .header__link:hover {
   opacity: .7;
 }
@@ -40,12 +50,6 @@
   min-height: 32px;
   border-radius: 3px;
   background: #3DDC84;
-  color: #000;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.33;
   cursor: pointer;
   transition: opacity .3s ease-out;
 }
@@ -71,8 +75,6 @@
   }
 
   .header__button {
-    font-size: 10px;
-    line-height: 1.6;
     min-height: 26px;
     min-width: 54px;
   }

@@ -4,10 +4,14 @@ import headerLogo from '../../images/header-logo.svg';
 function Header() {
   return (
     <header className="header">
-      <img className="header__logo" src={headerLogo} alt="Логотип проекта" />
-      <div className='header__container'>
+      <Link>
+        <img className="header__logo" src={headerLogo} alt="Логотип проекта" />
+      </Link>
+      <div className="header__container">
         <Link className="header__link">Регистрация</Link>
-        <button className="header__button">Войти</button>
+        <Link className="header__link header__link_type_button">
+          <button className="header__button">Войти</button>
+        </Link>
       </div>
     </header>
   );
