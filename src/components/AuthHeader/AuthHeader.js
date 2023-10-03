@@ -1,5 +1,5 @@
 import Navigation from '../Navigation/Navigation';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import headerLogo from '../../images/header-logo.svg';
 import useResize from '../../hooks/useResize';
@@ -18,17 +18,22 @@ function AuthHeader() {
     setBurgerMenuOpen(!isBurgerMenuOpen);
   };
 
+  const location = useLocation();
+
   return (
-    <header className="auth-header">
+    <header className={`auth-header ${location.pathname === "/" ? "auth-header_page_main" : ""}`}>
       <div className="auth-header__container">
-        <Link>
+        <Link to="/">
           <img
             className="auth-header__logo"
             src={headerLogo}
             alt="Логотип проекта"
           />
         </Link>
-        <Navigation isBurgerMenuOpen={isBurgerMenuOpen} />
+        <Navigation
+          isBurgerMenuOpen={isBurgerMenuOpen}
+          setBurgerMenuOpen={setBurgerMenuOpen}
+        />
       </div>
       <button
         className={`auth-header__burger ${

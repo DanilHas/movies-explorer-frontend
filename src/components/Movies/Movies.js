@@ -1,6 +1,12 @@
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
+
 function Movies() {
   return (
-    <div>Hello</div>
+    <main>
+      <SearchForm />
+      <MoviesCardList />
+    </main>
   );
 }
 

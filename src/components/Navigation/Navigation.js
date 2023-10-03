@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import accountIcon from '../../images/account-icon.svg';
 
-function Navigation({ isBurgerMenuOpen }) {
+function Navigation({ isBurgerMenuOpen, setBurgerMenuOpen }) {
+  const handleBurgerMenuClose = () => {
+    setBurgerMenuOpen(false);
+  };
+
+  const location = useLocation();
+
   return (
     <nav
       className={`navigation ${isBurgerMenuOpen ? 'navigation__active' : ''}`}
@@ -14,9 +20,11 @@ function Navigation({ isBurgerMenuOpen }) {
         {isBurgerMenuOpen && (
           <li>
             <Link
+              to="/"
               className={`navigation__link ${
-                isBurgerMenuOpen ? 'navigation__link_active' : ''
-              }`}
+                isBurgerMenuOpen ? 'navigation__link_type_burger' : ''
+              } ${location.pathname === '/' ? 'navigation__link_active' : ''}`}
+              onClick={handleBurgerMenuClose}
             >
               Главная
             </Link>
@@ -24,18 +32,28 @@ function Navigation({ isBurgerMenuOpen }) {
         )}
         <li>
           <Link
+            to="/movies"
             className={`navigation__link ${
-              isBurgerMenuOpen ? 'navigation__link_active' : ''
+              isBurgerMenuOpen ? 'navigation__link_type_burger' : ''
+            } ${
+              location.pathname === '/movies' ? 'navigation__link_active' : ''
             }`}
+            onClick={handleBurgerMenuClose}
           >
             Фильмы
           </Link>
         </li>
         <li>
           <Link
+            to="/saved-movies"
             className={`navigation__link ${
-              isBurgerMenuOpen ? 'navigation__link_active' : ''
+              isBurgerMenuOpen ? 'navigation__link_type_burger' : ''
+            } ${
+              location.pathname === '/saved-movies'
+                ? 'navigation__link_active'
+                : ''
             }`}
+            onClick={handleBurgerMenuClose}
           >
             Сохранённые фильмы
           </Link>
@@ -49,7 +67,9 @@ function Navigation({ isBurgerMenuOpen }) {
         Аккаунт
         <div
           className={`navigation__icon-wrapper ${
-            isBurgerMenuOpen ? 'navigation__icon-wrapper_active' : ''
+            isBurgerMenuOpen || location.pathname !== '/'
+              ? 'navigation__icon-wrapper_active'
+              : ''
           }`}
         >
           <img src={accountIcon} alt="Иконка аккаунта пользователя" />

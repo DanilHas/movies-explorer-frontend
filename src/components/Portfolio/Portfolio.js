@@ -1,4 +1,4 @@
-import imageLine from '../../images/portfolio-image-line.svg';
+import imageLine from '../../images/decoration-image-line.svg';
 
 function Portfolio() {
   return (

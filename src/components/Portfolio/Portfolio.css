@@ -1,6 +1,5 @@
 .about-me__portfolio-title {
   color: #8B8B8B;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -24,7 +23,6 @@
 
 .about-me__portfolio-link {
   color: #FFF;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;

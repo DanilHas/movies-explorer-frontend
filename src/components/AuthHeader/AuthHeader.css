@@ -1,9 +1,13 @@
 .auth-header {
   display: flex;
   max-width: 100%;
-  background-color: #073042;
+  background-color: #202020;
   padding: 18px 70px;
   align-items: center;
+}
+
+.auth-header_page_main {
+  background-color: #073042;
 }
 
 .auth-header__container {
@@ -34,6 +38,10 @@
   background-color: transparent;
   transition: opacity 0.3s ease-out;
   z-index: 2;
+}
+
+.auth-header__burger:hover {
+  opacity: .8;
 }
 
 .auth-header__burger::before,

@@ -13,7 +13,6 @@
 
 .about-project__title {
   color: #FFF;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -26,7 +25,6 @@
 
 .about-project__subtitle {
   color: #FFF;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -57,7 +55,6 @@
 }
 
 .about-project__timeline-text {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -80,7 +77,6 @@
 .about-project__timeline-caption {
   text-align: center;
   color: #8B8B8B;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
