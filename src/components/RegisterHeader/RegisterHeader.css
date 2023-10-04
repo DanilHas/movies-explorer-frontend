@@ -1,0 +1,56 @@
+.register-header {
+  max-width: 100%;
+  background: #202020;
+  display: flex;
+  justify-content: center;
+  padding: 70px 0 40px;
+}
+
+.register-header__container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 396px;
+  width: 100%;
+}
+
+.register-header__logo {
+  display: block;
+  transition: opacity .3s ease-out;
+}
+
+.register-header__logo:hover {
+  opacity: .7;
+}
+
+.register-header__title {
+  max-width: 396px;
+  width: 100%;
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .register-header {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .register-header {
+    padding: 56px 0 80px;
+  }
+
+  .register-header__container {
+    gap: 50px;
+    align-items: center;
+  }
+
+  .register-header__title {
+    text-align: center;
+  }
+}

@@ -12,7 +12,7 @@ function SearchForm() {
               className="search-form__input"
               type="text"
               placeholder="Фильм"
-              name='film'
+              name="film"
             />
             <button
               className="search-form__button"
@@ -26,13 +26,17 @@ function SearchForm() {
               />
             </button>
           </div>
-          <div className='search-form__checkbox-container'>
+          <div className="search-form__checkbox-container">
             <FilterCheckbox />
             <p className="search-form__checkbox-text">Короткометражки</p>
           </div>
         </fieldset>
       </form>
-      <img className='search-form__image-line' src={imageLine} alt="Стилистическая линия" />
+      <img
+        className="search-form__image-line"
+        src={imageLine}
+        alt="Стилистическая линия"
+      />
     </section>
   );
 }

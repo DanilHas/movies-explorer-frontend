@@ -1,12 +1,18 @@
+import AuthHeader from '../AuthHeader/AuthHeader';
+import Footer from '../Footer/Footer';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
 function Movies() {
   return (
-    <main>
-      <SearchForm />
-      <MoviesCardList />
-    </main>
+    <>
+      <AuthHeader />
+      <main>
+        <SearchForm />
+        <MoviesCardList />
+      </main>
+      <Footer />
+    </>
   );
 }
 

@@ -21,7 +21,11 @@ function AuthHeader() {
   const location = useLocation();
 
   return (
-    <header className={`auth-header ${location.pathname === "/" ? "auth-header_page_main" : ""}`}>
+    <header
+      className={`auth-header ${
+        location.pathname === '/' ? 'auth-header_page_main' : ''
+      }`}
+    >
       <div className="auth-header__container">
         <Link to="/">
           <img
