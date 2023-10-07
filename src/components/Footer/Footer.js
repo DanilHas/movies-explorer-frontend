@@ -1,16 +1,9 @@
-import imageLine from '../../images/decoration-image-line.svg';
-
 function Footer() {
   return (
     <footer className="footer">
       <h2 className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </h2>
-      <img
-        className="footer__image-line"
-        alt="Стилистическая линия"
-        src={imageLine}
-      />
       <div className="footer__wrapper">
         <p className="footer__copyright">© 2023</p>
         <ul className="footer__links-list">

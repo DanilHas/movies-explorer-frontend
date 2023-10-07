@@ -1,5 +1,4 @@
 import AuthHeader from '../AuthHeader/AuthHeader';
-import imageLine from '../../images/decoration-image-line.svg';
 import { useState } from 'react';
 import useCheckValidation from '../../hooks/useCheckValidation';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
@@ -24,9 +23,9 @@ function Profile({ setLoggedIn }) {
   return (
     <>
       <AuthHeader />
-      <main>
+      <main className="content">
         <section className="profile">
-          <h2 className="profile__title">Привет, Данил!</h2>
+          <h1 className="profile__title">Привет, Данил!</h1>
           <form
             className="form profile__form"
             onChange={handleValidation}
@@ -46,16 +45,14 @@ function Profile({ setLoggedIn }) {
                   type="text"
                   name="user-name"
                   id="name"
+                  placeholder="Введите имя"
                   required
+                  minLength={3}
+                  maxLength={40}
                   defaultValue="Данил"
                   disabled={!isProfileEdit}
                 />
               </div>
-              <img
-                className="profile__image-line"
-                alt="Стилистическая линия"
-                src={imageLine}
-              />
               <div className="profile__wrapper">
                 <label className="profile__input-label" htmlFor="email">
                   E-mail
@@ -65,6 +62,7 @@ function Profile({ setLoggedIn }) {
                   type="email"
                   name="user-email"
                   id="email"
+                  placeholder="Введите email"
                   required
                   defaultValue="pochta@yandex.ru"
                   disabled={!isProfileEdit}

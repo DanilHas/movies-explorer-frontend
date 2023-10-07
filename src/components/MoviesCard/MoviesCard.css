@@ -10,7 +10,7 @@
 .movie__description-container {
   display: flex;
   justify-content: space-between;
-  margin: 16px 16px 17px;
+  margin: 16px 21px 17px 16px;
 }
 
 .movie__title {
@@ -66,7 +66,7 @@
 
 @media screen and (max-width: 1023px) {
   .movie__description-container {
-    margin: 14px 14px 15px;
+    margin: 14px 21px 15px 14px;
   }
 
   .movie__duration {
@@ -76,7 +76,7 @@
 
 @media screen and (max-width: 767px) {
   .movie__description-container {
-    margin: 14px 10px 14px 14px;
+    margin: 14px 17px 13px 14px;
   }
 
   .movie__title {

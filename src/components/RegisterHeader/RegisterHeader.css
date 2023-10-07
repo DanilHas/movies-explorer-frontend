@@ -1,6 +1,5 @@
 .register-header {
-  max-width: 100%;
-  background: #202020;
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 70px 0 40px;

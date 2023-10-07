@@ -61,9 +61,7 @@ function Navigation({ isBurgerMenuOpen, setBurgerMenuOpen }) {
       </ul>
       <Link
         to="/profile"
-        className={`navigation__acc-link ${
-          isBurgerMenuOpen ? 'navigation__acc-link_active' : ''
-        }`}
+        className="navigation__acc-link"
         onClick={handleBurgerMenuClose}
       >
         Аккаунт

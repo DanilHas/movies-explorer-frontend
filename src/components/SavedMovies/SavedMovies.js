@@ -7,7 +7,7 @@ function SavedMovies() {
   return (
     <>
       <AuthHeader />
-      <main>
+      <main className="content">
         <SearchForm />
         <MoviesCardList />
       </main>

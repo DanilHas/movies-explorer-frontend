@@ -9,7 +9,7 @@ function AuthHeader() {
   const screenSize = useResize();
 
   useEffect(() => {
-    if (screenSize[0] >= 1023) {
+    if (screenSize[0] >= 768) {
       setBurgerMenuOpen(false);
     }
   }, [screenSize]);

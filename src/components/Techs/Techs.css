@@ -54,6 +54,7 @@
   .techs__subtitle {
     font-size: 12px;
     line-height: 1.5;
+    letter-spacing: -0.48px;
   }
 
   .techs__cards-list {

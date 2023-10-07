@@ -7,7 +7,7 @@ function Movies() {
   return (
     <>
       <AuthHeader />
-      <main>
+      <main className="content">
         <SearchForm />
         <MoviesCardList />
       </main>

@@ -6,9 +6,15 @@
   line-height: normal;
   letter-spacing: -0.88px;
   margin: 0;
-  max-width: 600px;
   width: 100%;
-  align-self: flex-start;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #DADADA;
+  margin-top: 23px;
 }
 
 .image-line {
@@ -23,6 +29,10 @@
   .title {
     font-size: 18px;
     letter-spacing: -0.72px;
+  }
+
+  .title::after {
+    margin-top: 28px;
   }
 
   .image-line {

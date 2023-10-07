@@ -1,6 +1,5 @@
 .auth {
   max-width: 100%;
-  background: #202020;
   padding-bottom: 70px;
   display: flex;
   flex-direction: column;
@@ -10,6 +9,10 @@
 .auth-form {
   max-width: 396px;
   width: 100%;
+  min-height: 381px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .auth-form__user-data {
@@ -40,12 +43,16 @@
   border: none;
   border-radius: 8px;
   background: #2F2F2F;
-  outline: none;
   color: #FFF;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.auth-form__input:focus {
+  outline: 2px inset #4285F4;
+  outline-offset: 3px;
 }
 
 .auth-form__input_type_error {
@@ -66,7 +73,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 69px 0 16px;
   cursor: pointer;
   transition: opacity .3s ease-out;
 }
@@ -83,6 +89,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-top: 16px;
 }
 
 .auth__link {
@@ -116,15 +123,16 @@
 @media screen and (max-width: 767px) {
   .auth-form {
     max-width: 260px;
+    min-height: 470px;
   }
 
   .auth-form__button {
     font-size: 12px;
-    margin: 157px 0 14px;
   }
 
   .auth__text {
     font-size: 12px;
+    margin-top: 14px;
   }
 
   .auth__link {

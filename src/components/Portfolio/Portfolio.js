@@ -1,5 +1,3 @@
-import imageLine from '../../images/decoration-image-line.svg';
-
 function Portfolio() {
   return (
     <>
@@ -23,11 +21,6 @@ function Portfolio() {
             ↗
           </a>
         </li>
-        <img
-          className="about-me__image-line"
-          alt="Стилистическая линия"
-          src={imageLine}
-        />
         <li className="about-me__portfolio-wrapper">
           <a
             className="about-me__portfolio-link about-me__portfolio-link_type_text"
@@ -46,11 +39,6 @@ function Portfolio() {
             ↗
           </a>
         </li>
-        <img
-          className="about-me__image-line"
-          alt="Стилистическая линия"
-          src={imageLine}
-        />
         <li className="about-me__portfolio-wrapper">
           <a
             className="about-me__portfolio-link about-me__portfolio-link_type_text"

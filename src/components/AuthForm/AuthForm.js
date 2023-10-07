@@ -19,8 +19,11 @@ function AuthForm({
   const location = useLocation();
 
   return (
-    <main>
-      <section className="auth">
+    <main className="content">
+      <section
+        className="auth"
+        aria-label="Регистрация/авторизация пользователя"
+      >
         <form className="form auth-form" onChange={handleValidation} noValidate>
           <fieldset className="auth-form__user-data">
             {location.pathname === '/signup' && (
@@ -35,7 +38,10 @@ function AuthForm({
                   type="text"
                   name="name"
                   id="name"
+                  placeholder="Введите имя"
                   required
+                  minLength={3}
+                  maxLength={40}
                   value={name}
                   onChange={handleChange}
                 />
@@ -56,6 +62,7 @@ function AuthForm({
                 type="email"
                 name="email"
                 id="email"
+                placeholder="Введите email"
                 required
                 value={email}
                 onChange={handleChange}
@@ -76,8 +83,10 @@ function AuthForm({
                 type="password"
                 name="password"
                 id="password"
+                placeholder="Введите пароль"
                 required
                 minLength={6}
+                maxLength={25}
                 value={password}
                 onChange={handleChange}
               />

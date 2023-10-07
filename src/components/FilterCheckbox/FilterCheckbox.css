@@ -23,6 +23,10 @@
   border-radius: 34px;
 }
 
+.switch__slider:hover {
+  opacity: .8;
+}
+
 .switch__slider:before {
   position: absolute;
   content: "";

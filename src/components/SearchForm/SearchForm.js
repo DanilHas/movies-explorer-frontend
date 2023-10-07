@@ -1,11 +1,19 @@
+import useCheckValidation from '../../hooks/useCheckValidation';
 import findButtonImage from '../../images/find-button.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import imageLine from '../../images/decoration-image-line.svg';
 
 function SearchForm() {
+  const [validation, handleValidation] = useCheckValidation();
+
+  const { isInputValid, isValid } = validation;
+
   return (
     <section className="search-form" aria-label="Форма поиска фильмов">
-      <form>
+      <form
+        className="search-form__form"
+        noValidate
+        onChange={handleValidation}
+      >
         <fieldset className="search-form__search-film">
           <div className="search-form__search-container">
             <input
@@ -13,9 +21,12 @@ function SearchForm() {
               type="text"
               placeholder="Фильм"
               name="film"
+              required
             />
             <button
-              className="search-form__button"
+              className={`search-form__button ${
+                !isValid ? 'search-form__button_disabled' : ''
+              }`}
               type="submit"
               aria-label="поиска фильмов"
             >
@@ -32,11 +43,6 @@ function SearchForm() {
           </div>
         </fieldset>
       </form>
-      <img
-        className="search-form__image-line"
-        src={imageLine}
-        alt="Стилистическая линия"
-      />
     </section>
   );
 }
