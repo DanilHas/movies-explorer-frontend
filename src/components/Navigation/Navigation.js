@@ -10,7 +10,7 @@ function Navigation({ isBurgerMenuOpen, setBurgerMenuOpen }) {
 
   return (
     <nav
-      className={`navigation ${isBurgerMenuOpen ? 'navigation__active' : ''}`}
+      className={`navigation ${isBurgerMenuOpen ? 'navigation_active' : ''}`}
     >
       <ul
         className={`navigation__links-list ${
