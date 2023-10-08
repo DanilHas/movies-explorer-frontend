@@ -1,0 +1,23 @@
+.form__error {
+  max-width: 410px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 10px;
+}
+
+.form__error_location_profile {
+  margin-bottom: 20px;
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+}
+
+.form__error_visible {
+  color: #EE3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

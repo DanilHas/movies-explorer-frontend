@@ -1,0 +1,41 @@
+.title {
+  color: #fff;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0;
+  width: 100%;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #DADADA;
+  margin-top: 23px;
+}
+
+.image-line {
+  max-width: 1140px;
+  width: 100%;
+  min-height: 1px;
+  padding-top: 23px;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .title::after {
+    margin-top: 28px;
+  }
+
+  .image-line {
+    padding-top: 28px;
+  }
+}
