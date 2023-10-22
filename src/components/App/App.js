@@ -216,6 +216,7 @@ function App() {
                   setLoadingSuccess={setLoadingSuccess}
                   isLoadingSuccess={isLoadingSuccess}
                   isDataLoading={isDataLoading}
+                  setChecked={setChecked}
                 />
               }
               loggedIn={loggedIn}

@@ -17,6 +17,7 @@ function Profile({
   setLoadingSuccess,
   isLoadingSuccess,
   isDataLoading,
+  setChecked
 }) {
   const [isProfileEdit, setProfileEdit] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -79,6 +80,7 @@ function Profile({
       .then(() => {
         localStorage.clear();
         setLoggedIn(false);
+        setChecked(false);
         navigate('/', { replace: true });
       })
       .catch((err) => console.error(`Error: ${err.status} ${err.statusText}`));
