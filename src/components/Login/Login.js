@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import RegisterHeader from '../RegisterHeader/RegisterHeader';
 
-function Login() {
-  const [formValues, setFormValues] = useState({
-    email: '',
-    password: '',
-  });
-
+function Login({
+  loadingErrorMessage,
+  setLoadingErrorMessage,
+  setLoadingError,
+  isLoadingError,
+  formValues,
+  setFormValues,
+  login,
+  isDataLoading,
+}) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -16,6 +20,11 @@ function Login() {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    setLoadingError(false);
+    setLoadingErrorMessage('');
+  }, []);
 
   return (
     <>
@@ -28,6 +37,10 @@ function Login() {
         authText={'Ещё не зарегистрированы? '}
         linkText={'Регистрация'}
         linkTo={'/signup'}
+        login={login}
+        loadingErrorMessage={loadingErrorMessage}
+        isLoadingError={isLoadingError}
+        isDataLoading={isDataLoading}
       />
     </>
   );

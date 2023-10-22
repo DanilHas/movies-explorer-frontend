@@ -5,6 +5,7 @@
   object-position: center;
   width: 100%;
   border-radius: 6px 6px 0 0;
+  height: 203px;
 }
 
 .movie__description-container {
@@ -72,6 +73,10 @@
   .movie__duration {
     padding: 0 0 14px 14px;
   }
+
+  .movie__image {
+    height: 190px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -89,5 +94,9 @@
 
   .movie__like-button_type_delete {
     display: flex;
+  }
+
+  .movie__image {
+    height: 168px;
   }
 }

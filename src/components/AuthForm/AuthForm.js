@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useCheckValidation from '../../hooks/useCheckValidation';
+import { EMAIL_REG_EX, NAME_REG_EX } from '../../utils/constants';
 
 function AuthForm({
   handleChange,
@@ -10,13 +11,28 @@ function AuthForm({
   authText,
   linkText,
   linkTo,
+  register,
+  loadingErrorMessage,
+  isLoadingError,
+  login,
+  isDataLoading,
 }) {
   const [validation, handleValidation] = useCheckValidation();
-  const { isInputValid, isValid, errorMessage } = validation;
+  const { isValid, isInputValid, errorMessage } = validation;
 
   const { name, email, password } = formValues;
 
+  const disabledButton = !isValid || isDataLoading;
+
   const location = useLocation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    location.pathname === '/signup'
+      ? register(name, email, password)
+      : login(email, password);
+  };
 
   return (
     <main className="content">
@@ -24,7 +40,12 @@ function AuthForm({
         className="auth"
         aria-label="Регистрация/авторизация пользователя"
       >
-        <form className="form auth-form" onChange={handleValidation} noValidate>
+        <form
+          className="form auth-form"
+          onChange={handleValidation}
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <fieldset className="auth-form__user-data">
             {location.pathname === '/signup' && (
               <div className="auth-form__container">
@@ -44,6 +65,7 @@ function AuthForm({
                   maxLength={40}
                   value={name}
                   onChange={handleChange}
+                  pattern={NAME_REG_EX}
                 />
                 <ErrorMessage
                   isValid={isInputValid.name}
@@ -66,6 +88,7 @@ function AuthForm({
                 required
                 value={email}
                 onChange={handleChange}
+                pattern={EMAIL_REG_EX}
               />
               <ErrorMessage
                 isValid={isInputValid.email}
@@ -96,12 +119,18 @@ function AuthForm({
               />
             </div>
           </fieldset>
+          <ErrorMessage
+            isValid={!isLoadingError}
+            errorMessage={loadingErrorMessage}
+            isLoadingError={isLoadingError}
+          />
           <button
             className={`auth-form__button ${
-              !isValid ? 'auth-form__button_disabled' : ''
+              disabledButton ? 'auth-form__button_disabled' : ''
             }`}
             type="submit"
             aria-label={buttonAriaLabel}
+            disabled={disabledButton}
           >
             {buttonText}
           </button>

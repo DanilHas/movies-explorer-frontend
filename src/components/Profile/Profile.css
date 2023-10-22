@@ -39,7 +39,6 @@
 
 .profile__wrapper {
   display: flex;
-  justify-content: space-between;
   min-width: 410px;
 }
 
@@ -50,6 +49,12 @@
 
 .profile__wrapper:not(:first-child) {
   margin-top: 17px;
+}
+
+.profile__input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .profile__input-label {
@@ -63,7 +68,7 @@
 }
 
 .profile__input {
-  max-width: 122px;
+  max-width: 100%;
   width: 100%;
   border: none;
   padding: 0;
@@ -76,9 +81,27 @@
   background: transparent;
 }
 
+.profile__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px #202020 inset;
+  -webkit-text-fill-color: #FFF;
+}
+
 .profile__input:focus {
   outline: none;
   border-bottom: 1px solid #4285F4;
+}
+
+.profile__success-message {
+  max-width: 410px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3DDC84;
+  font-size: 11px;
 }
 
 .profile__button {
