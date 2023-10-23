@@ -12,7 +12,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as mainApi from '../../utils/MainApi';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  const [loggedIn, setLoggedIn] = useState(isLoggedIn);
   const [isDataLoading, setDataLoading] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoadingError, setLoadingError] = useState(false);
@@ -26,6 +28,10 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [isFiltered, setFiltered] = useState(false);
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
+  const [profileFormValues, setProfileFormValues] = useState({
+    'user-name': '',
+    'user-email': '',
+  });
 
   const handleLogin = () => {
     setLoggedIn(true);
@@ -34,8 +40,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
     if (isLoggedIn) {
       mainApi
         .checkToken()
@@ -43,7 +47,10 @@ function App() {
           if (res) {
             setCurrentUser(res);
             setLoggedIn(true);
-            navigate('/movies', { replace: true });
+            setProfileFormValues({
+              'user-name': res.name,
+              'user-email': res.email,
+            });
           }
         })
         .catch((err) => {
@@ -217,6 +224,8 @@ function App() {
                   isLoadingSuccess={isLoadingSuccess}
                   isDataLoading={isDataLoading}
                   setChecked={setChecked}
+                  formValues={profileFormValues}
+                  setFormValues={setProfileFormValues}
                 />
               }
               loggedIn={loggedIn}
@@ -226,28 +235,38 @@ function App() {
         <Route
           path="/signup"
           element={
-            <Register
-              loadingErrorMessage={loadingErrorMessage}
-              setLoadingErrorMessage={setLoadingErrorMessage}
-              setLoadingError={setLoadingError}
-              isLoadingError={isLoadingError}
-              register={register}
-              isDataLoading={isDataLoading}
+            <ProtectedRoute
+              element={
+                <Register
+                  loadingErrorMessage={loadingErrorMessage}
+                  setLoadingErrorMessage={setLoadingErrorMessage}
+                  setLoadingError={setLoadingError}
+                  isLoadingError={isLoadingError}
+                  register={register}
+                  isDataLoading={isDataLoading}
+                />
+              }
+              loggedIn={!loggedIn}
             />
           }
         />
         <Route
           path="/signin"
           element={
-            <Login
-              loadingErrorMessage={loadingErrorMessage}
-              setLoadingErrorMessage={setLoadingErrorMessage}
-              setLoadingError={setLoadingError}
-              isLoadingError={isLoadingError}
-              formValues={formValues}
-              setFormValues={setFormValues}
-              login={login}
-              isDataLoading={isDataLoading}
+            <ProtectedRoute
+              element={
+                <Login
+                  loadingErrorMessage={loadingErrorMessage}
+                  setLoadingErrorMessage={setLoadingErrorMessage}
+                  setLoadingError={setLoadingError}
+                  isLoadingError={isLoadingError}
+                  formValues={formValues}
+                  setFormValues={setFormValues}
+                  login={login}
+                  isDataLoading={isDataLoading}
+                />
+              }
+              loggedIn={!loggedIn}
             />
           }
         />

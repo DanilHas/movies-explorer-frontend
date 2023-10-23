@@ -17,22 +17,16 @@ function Profile({
   setLoadingSuccess,
   isLoadingSuccess,
   isDataLoading,
-  setChecked
+  setChecked,
+  formValues,
+  setFormValues,
 }) {
   const [isProfileEdit, setProfileEdit] = useState(false);
-  const [formValues, setFormValues] = useState({
-    'user-name': '',
-    'user-email': '',
-  });
   const [validation, handleValidation] = useCheckValidation();
 
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    setFormValues({
-      'user-name': currentUser.name,
-      'user-email': currentUser.email,
-    });
     setLoadingError(false);
     setLoadingErrorMessage('');
     setLoadingSuccess(false);

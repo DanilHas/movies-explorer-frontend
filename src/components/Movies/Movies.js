@@ -5,6 +5,17 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
+import useResize from '../../hooks/useResize';
+import {
+  largeMoviesStep,
+  maxScreenMoviesCount,
+  middleScreenMoviesCount,
+  middleScreenWidth,
+  minScreenMoviesCount,
+  shortsDuration,
+  smallMoviesStep,
+  smallScreenWidth,
+} from '../../utils/constants';
 
 function Movies({
   isDataLoading,
@@ -22,29 +33,58 @@ function Movies({
   const [isFirstEntrance, setFirstEntrance] = useState(true);
   const allMovies = JSON.parse(localStorage.getItem('allMovies'));
   const searchData = JSON.parse(localStorage.getItem('searchData'));
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(0);
+  const size = useResize();
+  const screenWidth = size[0];
 
-  const filterMovies = useCallback((moviesArr, isChecked, inputText) => {
-    setInputValue(inputText);
-    setFirstEntrance(false);
+  const renderInitialMovies = () => {
+    if (screenWidth <= middleScreenWidth) {
+      setCount(middleScreenMoviesCount);
+      setStep(smallMoviesStep);
+    }
+    if (screenWidth <= smallScreenWidth) {
+      setCount(minScreenMoviesCount);
+      setStep(smallMoviesStep);
+    }
+    if (screenWidth > middleScreenWidth) {
+      setCount(maxScreenMoviesCount);
+      setStep(largeMoviesStep);
+    }
+  };
 
-    const filteredMovies = moviesArr.filter((movie) => {
-      const searchPhrase =
-        movie.nameRU.toLowerCase().includes(inputText.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(inputText.toLowerCase());
-      return isChecked ? searchPhrase && movie.duration <= 40 : searchPhrase;
-    });
+  const handleMoreButtonCLick = () => {
+    setCount(count + step);
+  };
 
-    setFilteredMovies(filteredMovies);
+  const filterMovies = useCallback(
+    (moviesArr, isChecked, inputText) => {
+      setInputValue(inputText);
+      setFirstEntrance(false);
 
-    localStorage.setItem(
-      'searchData',
-      JSON.stringify({
-        movies: filteredMovies,
-        checked: isChecked,
-        inputValue: inputText,
-      })
-    );
-  }, []);
+      const filteredMovies = moviesArr.filter((movie) => {
+        const searchPhrase =
+          movie.nameRU.toLowerCase().includes(inputText.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(inputText.toLowerCase());
+        return isChecked
+          ? searchPhrase && movie.duration <= shortsDuration
+          : searchPhrase;
+      });
+
+      setFilteredMovies(filteredMovies);
+      renderInitialMovies();
+
+      localStorage.setItem(
+        'searchData',
+        JSON.stringify({
+          movies: filteredMovies,
+          checked: isChecked,
+          inputValue: inputText,
+        })
+      );
+    },
+    [screenWidth]
+  );
 
   useEffect(() => {
     if (searchData) {
@@ -109,6 +149,8 @@ function Movies({
           isFirstEntrance={isFirstEntrance}
           handleChangeLikeMovieStatus={handleChangeLikeMovieStatus}
           savedMovies={savedMovies}
+          count={count}
+          handleMoreButtonCLick={handleMoreButtonCLick}
         />
       </main>
       <Footer />

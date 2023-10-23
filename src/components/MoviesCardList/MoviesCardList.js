@@ -1,8 +1,6 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
-import { useEffect, useState } from 'react';
-import useResize from '../../hooks/useResize';
 
 function MoviesCardList({
   movies,
@@ -12,12 +10,10 @@ function MoviesCardList({
   handleChangeLikeMovieStatus,
   deleteMovie,
   savedMovies,
+  count,
+  handleMoreButtonCLick,
 }) {
   const location = useLocation();
-  const size = useResize();
-  const screenWidth = size[0];
-  const [count, setCount] = useState(0);
-  const [step, setStep] = useState(0);
 
   const modifiedMoviesArr = movies.slice(0, count);
 
@@ -45,27 +41,6 @@ function MoviesCardList({
         </li>
       );
     });
-  };
-
-  useEffect(() => {
-    if (location.pathname === '/movies') {
-      if (screenWidth <= 1087) {
-        setCount(8);
-        setStep(2);
-      }
-      if (screenWidth <= 633) {
-        setCount(5);
-        setStep(2);
-      }
-      if (screenWidth >= 1088) {
-        setCount(12);
-        setStep(3);
-      }
-    }
-  }, [screenWidth]);
-
-  const handleMoreButtonCLick = () => {
-    setCount(count + step);
   };
 
   return (
