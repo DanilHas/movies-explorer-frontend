@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import RegisterHeader from '../RegisterHeader/RegisterHeader';
 
-function Register() {
+function Register({
+  loadingErrorMessage,
+  setLoadingErrorMessage,
+  setLoadingError,
+  isLoadingError,
+  register,
+  isDataLoading,
+}) {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -18,6 +25,11 @@ function Register() {
     });
   };
 
+  useEffect(() => {
+    setLoadingError(false);
+    setLoadingErrorMessage('');
+  }, []);
+
   return (
     <>
       <RegisterHeader title={'Добро пожаловать!'} />
@@ -29,6 +41,10 @@ function Register() {
         authText={'Уже зарегистрированы? '}
         linkText={'Войти'}
         linkTo={'/signin'}
+        register={register}
+        loadingErrorMessage={loadingErrorMessage}
+        isLoadingError={isLoadingError}
+        isDataLoading={isDataLoading}
       />
     </>
   );

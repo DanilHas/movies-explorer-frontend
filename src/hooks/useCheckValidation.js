@@ -17,7 +17,7 @@ function useCheckValidation() {
   };
 
   return [
-    { isInputValid, isValid, errorMessage },
+    { isValid, isInputValid, errorMessage },
     handleCheckValidation,
     setErrorMessage,
     setValid,

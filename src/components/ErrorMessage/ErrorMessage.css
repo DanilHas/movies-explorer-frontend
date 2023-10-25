@@ -8,9 +8,17 @@
 }
 
 .form__error_location_profile {
+  text-align: right;
+}
+
+.form__error_location_movies {
+  text-align: center;
+}
+
+.form__error_type_server-error {
+  text-align: center;
   margin-bottom: 20px;
   color: #FF004C;
-  text-align: center;
   font-size: 11px;
 }
 

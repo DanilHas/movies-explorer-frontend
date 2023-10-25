@@ -1,115 +1,86 @@
-import wordsFilm from '../../images/33-words-film.jpg';
-import yearFilm from '../../images/100-year-film.jpg';
-import banksyFilm from '../../images/banksy-film.jpg';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList() {
-  const movies = [
-    {
-      _id: 1,
-      title: '33 слова о дизайне',
-      duration: '1ч 47м',
-      poster: { wordsFilm },
-    },
-    {
-      _id: 2,
-      title: 'Киноальманах «100 лет дизайна»',
-      duration: '1ч 3м',
-      poster: { yearFilm },
-    },
-    {
-      _id: 3,
-      title: 'В погоне за Бенкси',
-      duration: '1ч 42м',
-      poster: { banksyFilm },
-    },
-    {
-      _id: 4,
-      title: '33 слова о дизайне',
-      duration: '1ч 47м',
-      poster: { wordsFilm },
-    },
-    {
-      _id: 5,
-      title: 'Киноальманах «100 лет дизайна»',
-      duration: '1ч 3м',
-      poster: { yearFilm },
-    },
-    {
-      _id: 6,
-      title: 'В погоне за Бенкси',
-      duration: '1ч 42м',
-      poster: { banksyFilm },
-    },
-    {
-      _id: 7,
-      title: '33 слова о дизайне',
-      duration: '1ч 47м',
-      poster: { wordsFilm },
-    },
-    {
-      _id: 8,
-      title: 'Киноальманах «100 лет дизайна»',
-      duration: '1ч 3м',
-      poster: { yearFilm },
-    },
-    {
-      _id: 9,
-      title: 'В погоне за Бенкси',
-      duration: '1ч 42м',
-      poster: { banksyFilm },
-    },
-    {
-      _id: 10,
-      title: '33 слова о дизайне',
-      duration: '1ч 47м',
-      poster: { wordsFilm },
-    },
-    {
-      _id: 11,
-      title: 'Киноальманах «100 лет дизайна»',
-      duration: '1ч 3м',
-      poster: { yearFilm },
-    },
-    {
-      _id: 12,
-      title: 'В погоне за Бенкси',
-      duration: '1ч 42м',
-      poster: { banksyFilm },
-    },
-  ];
-
+function MoviesCardList({
+  movies,
+  isDataLoading,
+  isLoadingError,
+  isFirstEntrance,
+  handleChangeLikeMovieStatus,
+  deleteMovie,
+  savedMovies,
+  count,
+  handleMoreButtonCLick,
+}) {
   const location = useLocation();
 
-  const movieList = movies.map((movie) => {
-    return (
-      <li className="movie" key={movie._id}>
-        <MoviesCard movie={movie} />
-      </li>
-    );
-  });
+  const modifiedMoviesArr = movies.slice(0, count);
+
+  const renderMovies = (moviesArr) => {
+    return moviesArr.map((movie) => {
+      const isLiked = savedMovies.some(
+        (savedMovie) => savedMovie.id === movie.id
+      );
+
+      return (
+        <li className="movie" key={movie.id}>
+          <a
+            className="movie__trailer-link"
+            href={movie.trailerLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MoviesCard
+              movie={movie}
+              handleChangeLikeMovieStatus={handleChangeLikeMovieStatus}
+              deleteMovie={deleteMovie}
+              isLiked={isLiked}
+            />
+          </a>
+        </li>
+      );
+    });
+  };
 
   return (
     <section className="movies" aria-label="Фильмы">
-      <ul
-        className={`movies__list ${
-          location.pathname === '/saved-movies'
-            ? 'movies__list_page_saved-movies'
-            : ''
-        }`}
-      >
-        {movieList}
-      </ul>
-      {location.pathname === '/movies' && (
-        <button
-          className="movies__more-button"
-          type="button"
-          aria-label="загрузки следующих фильмов"
+      {isDataLoading ? (
+        <Preloader />
+      ) : isLoadingError ? (
+        <p className="movies__text movies__text_type_error">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </p>
+      ) : !isFirstEntrance && movies.length === 0 ? (
+        <p className="movies__text">Ничего не найдено</p>
+      ) : isFirstEntrance ? (
+        <p className="movies__text">Введите поисковый запрос</p>
+      ) : (
+        <ul
+          className={`movies__list ${
+            location.pathname === '/saved-movies'
+              ? 'movies__list_page_saved-movies'
+              : ''
+          }`}
         >
-          Ещё
-        </button>
+          {location.pathname === '/movies'
+            ? renderMovies(modifiedMoviesArr)
+            : renderMovies(movies)}
+        </ul>
       )}
+      {location.pathname === '/movies' &&
+        movies.length > 0 &&
+        modifiedMoviesArr.length !== movies.length && (
+          <button
+            className="movies__more-button"
+            type="button"
+            aria-label="загрузки следующих фильмов"
+            onClick={handleMoreButtonCLick}
+          >
+            Ещё
+          </button>
+        )}
     </section>
   );
 }

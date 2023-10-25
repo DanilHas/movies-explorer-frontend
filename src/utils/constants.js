@@ -1,0 +1,10 @@
+export const NAME_REG_EX = '^[A-Za-zА-Яа-я\\-\\s]+$';
+export const EMAIL_REG_EX = '^\\S+@\\S+\\.\\S+$';
+export const shortsDuration = 40;
+export const maxScreenMoviesCount = 12;
+export const middleScreenMoviesCount = 8;
+export const minScreenMoviesCount = 5;
+export const largeMoviesStep = 3;
+export const smallMoviesStep = 2;
+export const middleScreenWidth = 1087;
+export const smallScreenWidth = 633;
